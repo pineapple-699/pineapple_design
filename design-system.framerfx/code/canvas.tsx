@@ -1,8 +1,6 @@
 // WARNING: this file is auto generated, any changes will be lost
 import { createDesignComponent, CanvasStore } from "framer"
 const canvas = CanvasStore.shared(); // CANVAS_DATA;
-export const Menu = createDesignComponent<{parentSize?:{width:number|string,height:number|string},width?:number|string,height?:number|string}>(canvas, "id_N7SPOhiTo", {}, 130,805);
-export const Sidebar = createDesignComponent<{parentSize?:{width:number|string,height:number|string},width?:number|string,height?:number|string}>(canvas, "id_kp31MGGaR", {}, 130,900);
 
 export const colors = Object.freeze({
     /** #FFFFFF */
