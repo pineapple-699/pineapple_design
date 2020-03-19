@@ -1,9 +1,9 @@
-# Packet Cafe Design
+# Pineapple Design
 
 This project is built using Framer Bridge which is a suite of tools:
 
-- That allows you to automatically publish and distribute components to Packet Cafe designers with [Framer](https://framer.com) and the [Framer Store](https://store.framer.com).
-- Import in production components built by Packet Cafe engineers. It’s an automatic and continually synced workflow, one that is customizable to your existing development workflow.
+- That allows you to automatically publish and distribute components to Pineapple designers with [Framer](https://framer.com) and the [Framer Store](https://store.framer.com).
+- Import in production components built by Pineapple engineers. It’s an automatic and continually synced workflow, one that is customizable to your existing development workflow.
 
 This repository uses [folder backed Framer projects](https://www.framer.com/support/using-framer-x/folder-backed-projects/) with the [Framer CLI](https://www.npmjs.com/package/framer-cli) and [Travis CI](https://travis-ci.com/) for an easy package publication flow.
 
