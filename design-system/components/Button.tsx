@@ -1,5 +1,5 @@
 import * as React from "react"
-import { theme } from "../theme"
+import { theme } from "../theme-custom"
 import styled from "styled-components"
 
 // Types
@@ -13,8 +13,11 @@ export type Props = {
   /** Disable button */
   disabled?: boolean
 
+  /** Focus button */
+  focus?: boolean
+
   /** Button kind */
-  kind?: "default" | "primary" | "danger"
+  kind?: "default" | "primary"
 }
 
 // Component
@@ -22,13 +25,17 @@ export const Button: React.FC<Props> = ({
   text,
   fluid,
   disabled,
+  focus,
   children,
   kind
 }) => (
   <StyledButton
-    className={`${fluid ? "fluid" : ""} ${disabled ? "disabled" : ""} ${
-      kind ? kind : ""
-    }`}
+    className={`
+      ${ fluid ? "fluid" : ""} 
+      ${ disabled ? "disabled" : ""} 
+      ${ kind ? kind : ""}
+      ${ focus ? "focus" : ""}
+    `}
   >
     {text || children}
   </StyledButton>
@@ -36,10 +43,11 @@ export const Button: React.FC<Props> = ({
 
 // Styles
 const StyledButton = styled.button`
-  background: ${theme.color.paneBg};
+  background: ${theme.color.background};
   border-radius: 4px;
   border: none;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  color: ${theme.color.primary};
+  // box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   color: ${theme.color.body};
   font-family: ${theme.font};
   font-size: 15px;
@@ -49,58 +57,45 @@ const StyledButton = styled.button`
   margin: 0;
   padding: ${theme.space[3]};
   text-align: center;
-  &:hover {
-    color: ${theme.color.bodyLight};
-    transition: box-shadow 0.2s, color 0.2s, background-color 0.2s;
-    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.1),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.05);
-  }
-  &:active {
-    transition: none;
-    color: ${theme.color.bodyLighter};
-    background-color: ${theme.color.paneBgDark};
-    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.05),
-      inset 0px 0px 0px 1px hsla(0, 0%, 0%, 0.05);
-  }
+
   &.fluid {
     width: 100%;
   }
+
   &.disabled {
     color: ${theme.color.bodyLightest};
+    opacity: 0.2;
     pointer-events: none;
+  }
+
+  &.focus {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
+    // color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Primary styles */
+  &.default {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    color: ${theme.color.primary};
+  }
+
+  &.default.focus {
+    // color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 0 0 1px ${theme.color.primary} !important;
   }
 
   /* Primary styles */
   &.primary {
     background: ${theme.color.primary};
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0);
     color: #fff;
-  }
-  &.primary:hover {
-    color: rgba(255, 255, 255, 0.8);
-    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.2),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.15);
-  }
-  &.primary:active {
-    color: rgba(255, 255, 255, 0.7);
-    background: ${theme.color.primaryDark};
-    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2),
-      inset 0px 0px 0px 1px hsla(0, 0%, 0%, 0.05);
   }
 
-  /* Danger styles */
-  &.danger {
-    background: ${theme.color.danger};
-    color: #fff;
-  }
-  &.danger:hover {
+  &.primary.focus {
     color: rgba(255, 255, 255, 0.8);
-    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.2),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+    background: ${theme.color.primaryDark} !important;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
   }
-  &.danger:active {
-    color: rgba(255, 255, 255, 0.6);
-    background: ${theme.color.dangerDark};
-    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2),
-      inset 0px 0px 0px 1px hsla(0, 0%, 0%, 0.05);
-  }
+
+  
 `
